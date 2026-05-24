@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_barang');
+            $table->string('kode_barang')->unique();
+            $table->integer('stok');
+            $table->decimal('harga', 15, 2);
+            $table->string('kondisi');
+            $table->string('lokasi');
+            $table->text('deskripsi');
+            $table->string('image');
+            $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
